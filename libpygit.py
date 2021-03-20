@@ -42,7 +42,6 @@ class GitRepository(object):
     gitdir = None
     conf = None
 
-    def 
     def __init__(self, path, force=False):
         self.worktree = path
         self.gitdir = os.path.join(path, ".git")
@@ -64,3 +63,11 @@ class GitRepository(object):
             vers = int(self.conf.get("core", "repositoryformatversion"))
             if vers != 0:
                 raise Exception("Unsupported repositoryformatversion %s" % vers)
+
+
+    # Member funtion for creating missing directories
+    def repo_path(repo, *path)
+    {
+        """Compute path under repo's gitdir. """
+        return os.path.join(repo.gitdir, *path)
+    }
